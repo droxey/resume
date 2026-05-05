@@ -1,4 +1,4 @@
-# [@droxey's resume] 
+# [Dani's Resume](https://droxey.com/resume)++
 
 _Reusable resume build package for producing an ATS-safe resume from a source Markdown._
 
