@@ -3,7 +3,6 @@
 ## Table of Contents
 
 - [Source of Truth](#source-of-truth)
-- [Files in the ZIP](#files-in-the-zip)
 - [Quick Rebuild](#quick-rebuild)
 - [Required Build Order](#required-build-order)
 - [Content Rules](#content-rules)
@@ -30,21 +29,6 @@ The source of truth for resume content is:
 The PDF is generated from the HTML, and the HTML is generated from the Markdown by the build script.
 
 Do not hand-edit the PDF.
-
----
-
-## Files in the ZIP
-
-The final ZIP must include:
-
-```text
-2026-05-05_Resume_AI_Technologist_ATS.md
-2026-05-05_Resume_AI_Technologist_ATS.html
-2026-05-05_Resume_AI_Technologist_ATS.pdf
-LINKEDIN.md
-build_resume_assets.py
-README.md
-```
 
 ---
 
