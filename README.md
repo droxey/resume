@@ -8,7 +8,7 @@ This repository contains:
 
 - the canonical Markdown resume
 - a build script that generates HTML, PDF, LinkedIn copy, and packaged assets
-- formatting, ATS, validation, and packaging rules for tailored resume variations
+- formatting, ATS, validation, and packaging rules for tailored resume variants
 
 ## Table of Contents
 
@@ -39,7 +39,7 @@ The canonical resume source is:
 2026-05-05_Resume_AI_Technologist_ATS.md
 ```
 
-All generated artifacts must be derived from this Markdown file through the build script.
+All generated artifacts must be derived from this Markdown source through the build script.
 
 Do not hand-edit generated HTML or PDF files.
 
@@ -50,7 +50,7 @@ Do not hand-edit generated HTML or PDF files.
 ### Edited manually
 
 - `2026-05-05_Resume_AI_Technologist_ATS.md` - canonical resume source
-- `variations/<COMPANY_JOB_TITLE>/JOB.md` - pasted job description for a tailored variation
+- `variations/<COMPANY_JOB_TITLE>/JOB.md` - pasted job description for a tailored variant
 - `variations/<COMPANY_JOB_TITLE>/GUIDE.md` - best-practice notes for the target role
 - `README.md` - repository documentation and operating spec
 
@@ -60,7 +60,7 @@ Do not hand-edit generated HTML or PDF files.
 - `2026-05-05_Resume_AI_Technologist_ATS.pdf`
 - `LINKEDIN.md`
 - `2026-05-05_Resume_AI_Technologist_ATS_assets.zip`
-- variation-specific HTML and PDF outputs
+- variant-specific HTML and PDF outputs
 
 ### Never hand-edit
 
@@ -122,9 +122,9 @@ When customizing this resume for a specific job:
 1. Read the job description.
 2. Create a folder under `variations/` named `COMPANY_JOB_TITLE`.
 3. Save the job description as `JOB.md`.
-4. Research current best practices for applying to the target role and summarize them in `GUIDE.md`.
-5. Start from the canonical source resume and tailor it using `JOB.md` and `GUIDE.md`.
-6. Save the tailored resume Markdown in the variation folder.
+4. Research current best practices for the target role and summarize them in `GUIDE.md`.
+5. Start from the canonical resume source and tailor it using `JOB.md` and `GUIDE.md`.
+6. Save the tailored Markdown resume in the variation folder.
 7. Generate HTML from the tailored Markdown and save it as `index.html`.
 8. Lint and fix Markdown and HTML issues.
 9. Generate `resume.pdf` from the linted HTML.
@@ -180,7 +180,7 @@ python build_resume_assets.py
 
 - The resume is a generic **AI Technologist / AI Leadership** resume.
 - It should work for AI Technologist, Applied AI Leader, Head of AI, AI Platform Lead, AI Transformation Lead, AI Architect, AI Engineering Leader, and agent-systems leadership roles.
-- Keep language focused on AI strategy becoming real execution: architecture, code, operations, governance, adoption, and measurable business value.
+- Keep language focused on turning AI strategy into execution: architecture, code, operations, governance, adoption, and measurable business value.
 - Preserve truthful numbers and claims:
   - 22+ years shipping production software
   - 9 years teaching and developer enablement
@@ -195,16 +195,16 @@ python build_resume_assets.py
   - 16-course applied CS program
   - 60+ GitHub stars and 100+ forks
   - 250+ junior engineers coached at Make School
-- Keep the patent link in the patent description, not the heading.
-- Project name must be `Skillsport`, not `Skillsport / skillsctl`.
-- Contact and URL lines must be separate from the headline and location line.
-- Header, location, phone/email, and URL line must be centered in Markdown, HTML, and PDF.
+- Keep the patent link in the patent description, not the patent heading.
+- Use `Skillsport`, not `Skillsport / skillsctl`.
+- Keep contact and URL lines separate from the headline and location line.
+- Center the header, location, phone/email, and URL line in Markdown, HTML, and PDF.
 
 ---
 
 ## No-Repetition Rules
 
-Never repeat the same project reference or description across sections.
+Never repeat the same project reference or project description across sections.
 
 Project-reference hierarchy:
 
@@ -216,7 +216,7 @@ Project-reference hierarchy:
 
 Specific repetition rules:
 
-- If a project appears in **Selected Applied AI Projects**, avoid repeating its description in Experience.
+- If a project appears in **Selected Applied AI Projects**, avoid repeating its project description in Experience.
 - If a project name must appear again for ATS value, reword the sentence completely and make it about business or technical impact, not project features.
 - Do not repeat identical metric bullets in both Achievements and Experience unless the second version adds new context.
 - Do not repeat `Clincher` as a lower-section project description after Selected Applied AI Projects.
@@ -235,13 +235,13 @@ Manual verification guidance:
 
 ## ATS Rules
 
-- Single-column layout only.
-- No tables.
-- No icons.
-- No graphics.
-- No sidebars.
-- No text boxes.
-- No image-only text.
+- Use a single-column layout only.
+- Use no tables.
+- Use no icons.
+- Use no graphics.
+- Use no sidebars.
+- Use no text boxes.
+- Use no image-only text.
 - Use standard headers:
   - Summary
   - Core Skills
@@ -285,8 +285,8 @@ Manual verification guidance:
 
 ## Markdown Rules
 
-- Markdown must stay copy-paste friendly.
-- Header block must use:
+- Keep Markdown copy/paste friendly.
+- Use this header block:
 
 ```html
 <div align="center">
@@ -294,16 +294,16 @@ Manual verification guidance:
 </div>
 ```
 
-- Header block must include:
+- Include these items in the header block:
   - name
   - headline
   - location
   - phone/email line
   - URL line
-- Core Skills must be alphabetized by bold label.
-- Selected Applied AI Projects must be alphabetized by project name.
+- Alphabetize Core Skills by bold label.
+- Alphabetize Selected Applied AI Projects by project name.
 - Use Markdown links for all URLs.
-- Patent section must be:
+- Use this patent section:
 
 ````markdown
 ## Patents
@@ -317,39 +317,39 @@ Manual verification guidance:
 
 ## HTML Rules
 
-- HTML is generated from Markdown by `build_resume_assets.py`.
+- Generate HTML from Markdown with `build_resume_assets.py`.
 - Do not manually change HTML content unless the Markdown changes first.
-- HTML must preserve all Markdown links.
-- Header must be centered.
-- Typography must be simple and ATS-safe:
+- Preserve all Markdown links in HTML.
+- Center the header.
+- Use simple, ATS-safe typography:
   - Arial / Helvetica
   - black text
   - blue underlined links
   - no decorative graphics
 - Use Letter page size.
 - Use compact margins that still leave smooth reading room.
-- Section headings must be uppercase in the PDF and HTML rendering.
-- Heading spacing must be readable but compact enough to keep the PDF to 3 pages.
-- `Selected Applied AI Projects` must start on page 2.
-- `FrameBuzz` must start on page 3.
+- Render section headings in uppercase in HTML and PDF.
+- Keep heading spacing readable but compact enough to hold the PDF to 3 pages.
+- Start `Selected Applied AI Projects` on page 2.
+- Start `FrameBuzz` on page 3.
 
 ---
 
 ## PDF Rules
 
-- PDF must be generated from HTML.
-- PDF must be exactly 3 pages.
-- PDF must preserve all Markdown links.
-- PDF links must match Markdown links exactly.
-- PDF text must be selectable and parseable.
-- No blank bullet artifacts.
-- No clipping.
-- No overlapping text.
-- No broken glyphs.
-- No content should unexpectedly move pages except intended layout controls:
+- Generate the PDF from HTML.
+- Keep the PDF to exactly 3 pages.
+- Preserve all Markdown links in the PDF.
+- Match PDF links exactly to Markdown links.
+- Keep PDF text selectable and parseable.
+- Use no blank bullet artifacts.
+- Use no clipping.
+- Use no overlapping text.
+- Use no broken glyphs.
+- Do not let content move unexpectedly across pages except for these intended layout controls:
   - `Selected Applied AI Projects` starts on page 2.
   - `FrameBuzz` starts on page 3.
-- Render all pages to PNG and visually inspect before delivery.
+- Render all pages to PNG and inspect them visually before delivery.
 - Return PNGs to the user in the response.
 
 ---
@@ -357,8 +357,8 @@ Manual verification guidance:
 ## LinkedIn Rules
 
 - `LINKEDIN.md` is a step-by-step copy/paste guide for updating LinkedIn.
-- It must include a Table of Contents.
-- It must include discrete copy blocks for:
+- Include a Table of Contents.
+- Include discrete copy blocks for:
   - profile basics
   - headline
   - about
@@ -368,10 +368,10 @@ Manual verification guidance:
   - patent
   - education
   - skills
-- LinkedIn copy should use plain text blocks, not resume Markdown formatting.
+- Use plain-text blocks, not resume Markdown formatting.
 - LinkedIn Projects may name and describe projects.
 - LinkedIn Experience should avoid repeating the same project descriptions.
-- LinkedIn copy should stay human, direct, and technical.
+- Keep LinkedIn copy human, direct, and technical.
 
 ---
 
@@ -396,7 +396,7 @@ Before delivery, verify the following.
 
 - Markdown and PDF links match exactly.
 - PDF text is selectable.
-- Removed hybrid/travel phrase did not reappear.
+- The removed hybrid/travel phrase did not reappear.
 - Header, contact, and URL lines are centered.
 - `Selected Applied AI Projects` starts on page 2.
 - `FrameBuzz` starts on page 3.
