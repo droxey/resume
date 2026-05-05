@@ -1,42 +1,24 @@
-# [Dani's Resume](https://droxey.com/resume)++
+# [Dani's Resume](https://droxey.com/resume)
 
-_Reusable resume build package for producing an ATS-safe resume variation that highlight your speific accomplishments and experienxes for that job._
+Reusable build workflow for generating ATS-safe, job-tailored resume variants from a canonical Markdown resume source.
 
-Combines a BASE_RESUME.md + Any Job Description to create a new resume for any job title. 
+## Overview
 
-1. Read the job description.
-2. Create a new folder inside variations. Use a name based on the company - job title. Everything we create or update for this unique job must be stored here.
-3. Save job description as 'JOB.md`
-4. Web search: `$CURRENT_MONTH $CURRENT_YEAR best practices: apply for $JOB_TITLE`. Visit 3-5 pages and summarize the content. Compare all results. Condense into concise bulleted list of best practices. Validate by making sure each bullet point doesn't contradict ang other, and no concepts are repeated. Replace $MONTH_LONG_NAME $YYYY with current month and year (example: February 2026)
-5. Store in GUIDE.md. Use this template. Replace $MONTH_LONG_NAME $YYYY with current month and year (example: February 2026). Bullets below.
-  
-```text
+This repository contains:
 
-# Best Practices $MONTH_LONG_NAME $YYYY
-
-- Best practice 1
-  Source: [RESULT TITLE]($RESULT_URL)
-- Best practice 2
-  Source: [RESULT TITLE]($RESULT_URL)
-
----
-
-_last updated: **$below.
-```
-6. Create variations. Start with BASE_RESUME.md. Use JOB.md + GUIDE.md to rewritr the resune. Save as README.md.
-7. Output new variations in HTML. Save as index.html.
-8. Run linters on Markdown and HTML resumes. Automatically correct errors.
-9. Make PDF from linted HTML. Save as resume.pdf
-10. 
-
+- the canonical Markdown resume
+- a build script that generates HTML, PDF, LinkedIn copy, and packaged assets
+- formatting, ATS, validation, and packaging rules for producing customized resume variations
 
 ## Table of Contents
 
-Below details the complete formatting, ATS, voice, link, layout, validation, and packaging rules used to generate customized variations of a resume.
-
+- [Overview](#overview)
 - [Source of Truth](#source-of-truth)
+- [File Roles](#file-roles)
 - [Quick Rebuild](#quick-rebuild)
-- [Required Build Order](#required-build-order)
+- [Build Workflow](#build-workflow)
+- [Git and Delivery Workflow](#git-and-delivery-workflow)
+- [Tailoring Workflow](#tailoring-workflow)
 - [Content Rules](#content-rules)
 - [No-Repetition Rules](#no-repetition-rules)
 - [ATS Rules](#ats-rules)
@@ -45,28 +27,52 @@ Below details the complete formatting, ATS, voice, link, layout, validation, and
 - [PDF Rules](#pdf-rules)
 - [LinkedIn Rules](#linkedin-rules)
 - [Validation Checklist](#validation-checklist)
-- [Customizing for a Specific Job](#customizing-for-a-specific-job)
 - [Troubleshooting](#troubleshooting)
 
 ---
 
 ## Source of Truth
 
-The source of truth for resume content is:
+The canonical source of truth for resume content is:
 
 ```text
 2026-05-05_Resume_AI_Technologist_ATS.md
 ```
 
-The PDF is generated from the HTML, and the HTML is generated from the Markdown by the build script.
+Generated artifacts must be derived from this Markdown source through the build script.
 
-Do not hand-edit the PDF.
+Do not hand-edit generated HTML or PDF files.
+
+---
+
+## File Roles
+
+### Edited manually
+
+- `2026-05-05_Resume_AI_Technologist_ATS.md` - canonical resume source
+- `variations/<COMPANY_JOB_TITLE>/JOB.md` - pasted job description for a tailored variation
+- `variations/<COMPANY_JOB_TITLE>/GUIDE.md` - current best-practice notes for the target role
+- `README.md` - repository documentation and operating spec
+
+### Generated
+
+- `2026-05-05_Resume_AI_Technologist_ATS.html`
+- `2026-05-05_Resume_AI_Technologist_ATS.pdf`
+- `LINKEDIN.md`
+- `2026-05-05_Resume_AI_Technologist_ATS_assets.zip`
+- variation-specific HTML and PDF outputs
+
+### Never hand-edit
+
+- generated HTML files
+- generated PDF files
+- generated ZIP packages
 
 ---
 
 ## Quick Rebuild
 
-From inside the unzipped folder:
+Run from the repository root:
 
 ```bash
 python build_resume_assets.py
@@ -84,20 +90,89 @@ README.md
 
 ---
 
-## Required Build Order
+## Build Workflow
 
 Use this order every time.
 
 1. Update the Markdown resume.
 2. Audit for repeated project names and repeated bullet claims.
-3. Apply the user's voice pass: direct, clear, human, technical, no AI-sounding filler.
+3. Apply the user's voice pass: direct, clear, human, technical, and free of AI-sounding filler.
 4. Regenerate HTML from Markdown.
 5. Regenerate PDF from HTML.
 6. Regenerate LinkedIn copy blocks.
 7. Validate page count, links, typography, and ATS safety.
-8. Git: add, commit on new branch named YYYY-MM-DD_JOB_NAME.
-9. Create PR and return link to user.
 
+---
+
+## Git and Delivery Workflow
+
+After the build and validation steps pass:
+
+1. Create a branch named `YYYY-MM-DD_JOB_NAME`.
+2. Commit the updated source and generated artifacts.
+3. Open a pull request.
+4. Return the pull request link to the user.
+
+---
+
+## Tailoring Workflow
+
+When customizing this resume for a specific job:
+
+1. Read the job description.
+2. Create a new folder under `variations/` named `COMPANY_JOB_TITLE`.
+3. Save the job description as `JOB.md`.
+4. Research current best practices for applying to the target role and summarize them in `GUIDE.md`.
+5. Start from the canonical source resume and tailor it using `JOB.md` and `GUIDE.md`.
+6. Save the tailored resume Markdown in the variation folder.
+7. Generate HTML from the tailored Markdown and save it as `index.html`.
+8. Lint and fix Markdown and HTML issues.
+9. Generate `resume.pdf` from the linted HTML.
+10. Validate links, layout, page count, ATS safety, and repetition rules before delivery.
+
+Use this template for `GUIDE.md` and replace `$MONTH_LONG_NAME` and `$YYYY` with the current month and year, for example `May 2026`.
+
+```text
+# Best Practices $MONTH_LONG_NAME $YYYY
+
+- Best practice 1
+  Source: [RESULT TITLE]($RESULT_URL)
+- Best practice 2
+  Source: [RESULT TITLE]($RESULT_URL)
+
+---
+
+_last updated: $MONTH_LONG_NAME $YYYY_
+```
+
+Research guidance:
+
+- Search for `$CURRENT_MONTH $CURRENT_YEAR best practices: apply for $JOB_TITLE`.
+- Review 3 to 5 sources.
+- Compare the sources.
+- Condense the results into a concise bulleted list.
+- Cite each bullet with its source.
+
+Tailoring guidance:
+
+1. Extract the role title, required skills, preferred skills, tools, leadership scope, and outcome language.
+2. Compare the job language against the resume.
+3. Add exact-match terms only where truthful.
+4. Prefer edits in this order:
+   1. Professional Experience
+   2. Core Skills
+   3. Selected AI Leadership Results
+   4. Summary
+5. Do not invent metrics.
+6. Do not repeat project descriptions.
+7. Keep the resume generic enough for leadership unless applying to a very specific role.
+8. Rebuild with:
+
+```bash
+python build_resume_assets.py
+```
+
+9. Validate before sending.
 
 ---
 
@@ -122,7 +197,7 @@ Use this order every time.
   - 250+ junior engineers coached at Make School
 - Keep the patent link in the patent description, not the patent heading.
 - Project name must be `Skillsport`, not `Skillsport / skillsctl`.
-- Contact and URL lines must be separate from the headline/location line.
+- Contact and URL lines must be separate from the headline and location line.
 - Header, location, phone/email, and URL line must be centered in Markdown, HTML, and PDF.
 
 ---
@@ -142,12 +217,19 @@ Project-reference hierarchy:
 Specific repetition rules:
 
 - If a project appears in **Selected Applied AI Projects**, avoid repeating its project description in Experience.
-- If a project name must appear again for ATS value, reword the sentence completely and make it about business/technical impact, not project features.
+- If a project name must appear again for ATS value, reword the sentence completely and make it about business or technical impact, not project features.
 - Do not repeat identical metric bullets in both Achievements and Experience unless the second version adds new context.
 - Do not repeat `Clincher` as a lower-section project description after Selected Applied AI Projects.
 - Do not repeat `GrainDL` as a lower-section project description after Selected Applied AI Projects.
 - Do not repeat `Skillsport` as a lower-section project description after Selected Applied AI Projects.
 - Avoid repeated phrases like `safe-by-default`, `deployment harness`, `production-grade`, `developer mindshare`, and `working prototypes` unless each use adds a distinct point.
+
+Manual verification guidance:
+
+1. Search for each selected project name.
+2. Keep the strongest mention.
+3. Reword or remove lower mentions.
+4. Search for repeated metrics and repeated opening phrases.
 
 ---
 
@@ -223,13 +305,13 @@ Specific repetition rules:
 - Use Markdown links for all URLs.
 - Patent section must be:
 
-```markdown
+````markdown
 ## Patents
 
 ### US20140199046A1 - Conversations on Time-Shifted Content
 
 **[Invented live-streaming video technology](https://www.google.com/patents/US20140199046)** for timestamp-anchored conversations and viewer interaction on live and recorded media.
-```
+````
 
 ---
 
@@ -246,7 +328,7 @@ Specific repetition rules:
   - no decorative graphics
 - Use Letter page size.
 - Use compact margins that still leave smooth reading room.
-- Section headings must be uppercase in the PDF/HTML rendering.
+- Section headings must be uppercase in the PDF and HTML rendering.
 - Heading spacing must be readable but compact enough to keep the PDF to 3 pages.
 - `Selected Applied AI Projects` must start on page 2.
 - `FrameBuzz` must start on page 3.
@@ -265,16 +347,16 @@ Specific repetition rules:
 - No overlapping text.
 - No broken glyphs.
 - No content should unexpectedly move pages except intended layout controls:
-  - Selected Applied AI Projects starts page 2.
-  - FrameBuzz starts page 3.
+  - `Selected Applied AI Projects` starts on page 2.
+  - `FrameBuzz` starts on page 3.
 - Render all pages to PNG and visually inspect before delivery.
-- Return PNGs to user in response.
+- Return PNGs to the user in the response.
 
 ---
 
 ## LinkedIn Rules
 
-- `LINKEDIN.md` is a step-by-step copy/paste guide for updating LinkedIn.
+- `LINKEDIN.md` is a step-by-step copy and paste guide for updating LinkedIn.
 - It must include a Table of Contents.
 - It must include discrete copy blocks for:
   - profile basics
@@ -295,7 +377,9 @@ Specific repetition rules:
 
 ## Validation Checklist
 
-Before delivering assets, verify:
+Before delivering assets, verify the following.
+
+### Automated checks
 
 - Markdown exists.
 - HTML exists.
@@ -305,49 +389,27 @@ Before delivering assets, verify:
 - Build script exists.
 - ZIP exists.
 - PDF page count is exactly 3.
+- Markdown files pass a Markdown linter.
+- HTML files pass an HTML linter.
+
+### Manual or visual checks
+
 - Markdown and PDF links match exactly.
 - PDF text is selectable.
 - Removed hybrid/travel phrase did not reappear.
-- Header/contact/URL lines are centered.
-- Selected Applied AI Projects starts on page 2.
-- FrameBuzz starts on page 3.
+- Header, contact, and URL lines are centered.
+- `Selected Applied AI Projects` starts on page 2.
+- `FrameBuzz` starts on page 3.
 - Core Skills are alphabetized.
 - Selected Applied AI Projects are alphabetized.
-- Project names/descriptions are not repeated below their first strong mention.
-- Markdown files pass markdown linter.
-- HTML files pass html linter.
-
----
-
-## Customizing for a Specific Job
-
-When tailoring this resume to a particular job:
-
-1. Paste the full job description into the working chat.
-2. Extract role title, required skills, preferred skills, tools, leadership scope, and outcome language.
-3. Compare job language against the resume.
-4. Add exact-match terms only where truthful.
-5. Prefer edits in this order:
-   1. Professional Experience
-   2. Core Skills
-   3. Selected AI Leadership Results
-   4. Summary
-6. Do not invent metrics.
-7. Do not repeat project descriptions.
-8. Keep the resume generic enough for leadership unless applying to a very specific role.
-9. Rebuild with:
-
-```bash
-python build_resume_assets.py
-```
-
-10. Validate before sending.
+- Project names and descriptions are not repeated below their first strong mention.
+- PNG renders of all PDF pages have been visually inspected before delivery.
 
 ---
 
 ## Troubleshooting
 
-If PDF goes to 4 pages:
+If the PDF goes to 4 pages:
 
 1. Reduce margins slightly before cutting content.
 2. Reduce section spacing slightly.
@@ -367,5 +429,4 @@ If content repeats:
 1. Search for each selected project name.
 2. Keep the strongest mention.
 3. Reword or remove lower mentions.
-4. Search for repeated metrics and repeated first phrases.
-
+4. Search for repeated metrics and repeated opening phrases.
