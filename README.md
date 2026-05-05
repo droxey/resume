@@ -1,6 +1,6 @@
 # [Dani's Resume](https://droxey.com/resume)
 
-Reusable build workflow for generating ATS-safe, job-tailored resume variants from a canonical Markdown resume source.
+Reusable workflow for generating ATS-safe, job-tailored resume variants from a canonical Markdown source.
 
 ## Overview
 
@@ -8,7 +8,7 @@ This repository contains:
 
 - the canonical Markdown resume
 - a build script that generates HTML, PDF, LinkedIn copy, and packaged assets
-- formatting, ATS, validation, and packaging rules for producing customized resume variations
+- formatting, ATS, validation, and packaging rules for tailored resume variations
 
 ## Table of Contents
 
@@ -33,13 +33,13 @@ This repository contains:
 
 ## Source of Truth
 
-The canonical source of truth for resume content is:
+The canonical resume source is:
 
 ```text
 2026-05-05_Resume_AI_Technologist_ATS.md
 ```
 
-Generated artifacts must be derived from this Markdown source through the build script.
+All generated artifacts must be derived from this Markdown file through the build script.
 
 Do not hand-edit generated HTML or PDF files.
 
@@ -51,7 +51,7 @@ Do not hand-edit generated HTML or PDF files.
 
 - `2026-05-05_Resume_AI_Technologist_ATS.md` - canonical resume source
 - `variations/<COMPANY_JOB_TITLE>/JOB.md` - pasted job description for a tailored variation
-- `variations/<COMPANY_JOB_TITLE>/GUIDE.md` - current best-practice notes for the target role
+- `variations/<COMPANY_JOB_TITLE>/GUIDE.md` - best-practice notes for the target role
 - `README.md` - repository documentation and operating spec
 
 ### Generated
@@ -78,7 +78,7 @@ Run from the repository root:
 python build_resume_assets.py
 ```
 
-The script regenerates:
+This regenerates:
 
 ```text
 2026-05-05_Resume_AI_Technologist_ATS.html
@@ -92,7 +92,7 @@ README.md
 
 ## Build Workflow
 
-Use this order every time.
+Use this order every time:
 
 1. Update the Markdown resume.
 2. Audit for repeated project names and repeated bullet claims.
@@ -106,7 +106,7 @@ Use this order every time.
 
 ## Git and Delivery Workflow
 
-After the build and validation steps pass:
+After build and validation pass:
 
 1. Create a branch named `YYYY-MM-DD_JOB_NAME`.
 2. Commit the updated source and generated artifacts.
@@ -120,7 +120,7 @@ After the build and validation steps pass:
 When customizing this resume for a specific job:
 
 1. Read the job description.
-2. Create a new folder under `variations/` named `COMPANY_JOB_TITLE`.
+2. Create a folder under `variations/` named `COMPANY_JOB_TITLE`.
 3. Save the job description as `JOB.md`.
 4. Research current best practices for applying to the target role and summarize them in `GUIDE.md`.
 5. Start from the canonical source resume and tailor it using `JOB.md` and `GUIDE.md`.
@@ -130,7 +130,7 @@ When customizing this resume for a specific job:
 9. Generate `resume.pdf` from the linted HTML.
 10. Validate links, layout, page count, ATS safety, and repetition rules before delivery.
 
-Use this template for `GUIDE.md` and replace `$MONTH_LONG_NAME` and `$YYYY` with the current month and year, for example `May 2026`.
+Use this `GUIDE.md` template. Replace `$MONTH_LONG_NAME` and `$YYYY` with the current month and year, for example `May 2026`.
 
 ```text
 # Best Practices $MONTH_LONG_NAME $YYYY
@@ -149,7 +149,7 @@ Research guidance:
 
 - Search for `$CURRENT_MONTH $CURRENT_YEAR best practices: apply for $JOB_TITLE`.
 - Review 3 to 5 sources.
-- Compare the sources.
+- Compare them.
 - Condense the results into a concise bulleted list.
 - Cite each bullet with its source.
 
@@ -195,7 +195,7 @@ python build_resume_assets.py
   - 16-course applied CS program
   - 60+ GitHub stars and 100+ forks
   - 250+ junior engineers coached at Make School
-- Keep the patent link in the patent description, not the patent heading.
+- Keep the patent link in the patent description, not the heading.
 - Project name must be `Skillsport`, not `Skillsport / skillsctl`.
 - Contact and URL lines must be separate from the headline and location line.
 - Header, location, phone/email, and URL line must be centered in Markdown, HTML, and PDF.
@@ -204,19 +204,19 @@ python build_resume_assets.py
 
 ## No-Repetition Rules
 
-Never repeat the same project reference or project description in multiple sections.
+Never repeat the same project reference or description across sections.
 
 Project-reference hierarchy:
 
 1. **Selected AI Leadership Results** can describe a capability or result.
 2. **Selected Applied AI Projects** can name and describe specific projects.
-3. **Professional Experience** must use capability/outcome language when a project was already named above.
+3. **Professional Experience** must use capability or outcome language when a project was already named above.
 4. **Open Source** must stay broad and must not re-describe the selected projects.
 5. **LinkedIn Experience** must not repeat LinkedIn Projects wording.
 
 Specific repetition rules:
 
-- If a project appears in **Selected Applied AI Projects**, avoid repeating its project description in Experience.
+- If a project appears in **Selected Applied AI Projects**, avoid repeating its description in Experience.
 - If a project name must appear again for ATS value, reword the sentence completely and make it about business or technical impact, not project features.
 - Do not repeat identical metric bullets in both Achievements and Experience unless the second version adds new context.
 - Do not repeat `Clincher` as a lower-section project description after Selected Applied AI Projects.
@@ -276,7 +276,7 @@ Manual verification guidance:
   - distributed systems
   - stakeholder alignment
   - business outcomes
-- Put key terms in Summary, Core Skills, Results, and Experience, not just in a skills dump.
+- Put key terms in Summary, Core Skills, Results, and Experience, not only in a skills dump.
 - Keep bullets outcome-oriented and specific.
 - Use ASCII punctuation where possible.
 - Preserve selectable text and parseable hyperlinks in the PDF.
@@ -318,7 +318,7 @@ Manual verification guidance:
 ## HTML Rules
 
 - HTML is generated from Markdown by `build_resume_assets.py`.
-- Do not manually change content in HTML unless the Markdown changes first.
+- Do not manually change HTML content unless the Markdown changes first.
 - HTML must preserve all Markdown links.
 - Header must be centered.
 - Typography must be simple and ATS-safe:
@@ -356,7 +356,7 @@ Manual verification guidance:
 
 ## LinkedIn Rules
 
-- `LINKEDIN.md` is a step-by-step copy and paste guide for updating LinkedIn.
+- `LINKEDIN.md` is a step-by-step copy/paste guide for updating LinkedIn.
 - It must include a Table of Contents.
 - It must include discrete copy blocks for:
   - profile basics
@@ -377,7 +377,7 @@ Manual verification guidance:
 
 ## Validation Checklist
 
-Before delivering assets, verify the following.
+Before delivery, verify the following.
 
 ### Automated checks
 
