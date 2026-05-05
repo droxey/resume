@@ -62,8 +62,8 @@ Do not hand-edit generated HTML or PDF files.
 - `2026-05-05_Resume_AI_Technologist_ATS.pdf`
 - `LINKEDIN.md`
 - `2026-05-05_Resume_AI_Technologist_ATS_assets.zip`
-- `jobs/Company_Name/JOB_TITLE/index.html`
-- `jobs/Company_Name/JOB_TITLE/resume.pdf`
+- `jobs/Claude/Applied_AI_Evangelist/index.html`
+- `jobs/Claude/Applied_AI_Evangelist/resume.pdf`
 
 ### Never hand-edit
 
