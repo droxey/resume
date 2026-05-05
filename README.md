@@ -1,4 +1,6 @@
-# Resume Build Instructions
+# [@droxey's resume] 
+
+_Reusable resume build package for producing an ATS-safe resume from a source Markdown._
 
 ## Table of Contents
 
@@ -63,7 +65,9 @@ Use this order every time.
 5. Regenerate PDF from HTML.
 6. Regenerate LinkedIn copy blocks.
 7. Validate page count, links, typography, and ATS safety.
-8. Rebuild ZIP.
+8. Git: add, commit on new branch named YYYY-MM-DD_JOB_NAME.
+9. Create PR and return link to user.
+
 
 ---
 
@@ -88,7 +92,6 @@ Use this order every time.
   - 250+ junior engineers coached at Make School
 - Keep the patent link in the patent description, not the patent heading.
 - Project name must be `Skillsport`, not `Skillsport / skillsctl`.
-- Do not include the old phrase `Open to San Francisco / New York hybrid schedules and regular travel`.
 - Contact and URL lines must be separate from the headline/location line.
 - Header, location, phone/email, and URL line must be centered in Markdown, HTML, and PDF.
 
@@ -235,6 +238,7 @@ Specific repetition rules:
   - Selected Applied AI Projects starts page 2.
   - FrameBuzz starts page 3.
 - Render all pages to PNG and visually inspect before delivery.
+- Return PNGs to user in response.
 
 ---
 
@@ -280,7 +284,8 @@ Before delivering assets, verify:
 - Core Skills are alphabetized.
 - Selected Applied AI Projects are alphabetized.
 - Project names/descriptions are not repeated below their first strong mention.
-- ZIP includes every required asset.
+- Markdown files pass markdown linter.
+- HTML files pass html linter.
 
 ---
 
