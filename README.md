@@ -1,8 +1,38 @@
 # [Dani's Resume](https://droxey.com/resume)++
 
-_Reusable resume build package for producing an ATS-safe resume from a source Markdown._
+_Reusable resume build package for producing an ATS-safe resume variation that highlight your speific accomplishments and experienxes for that job._
+
+Combines a BASE_RESUME.md + Any Job Description to create a new resume for any job title. 
+
+1. Read the job description.
+2. Create a new folder inside variations. Use a name based on the company - job title. Everything we create or update for this unique job must be stored here.
+3. Save job description as 'JOB.md`
+4. Web search: `$CURRENT_MONTH $CURRENT_YEAR best practices: apply for $JOB_TITLE`. Visit 3-5 pages and summarize the content. Compare all results. Condense into concise bulleted list of best practices. Validate by making sure each bullet point doesn't contradict ang other, and no concepts are repeated. Replace $MONTH_LONG_NAME $YYYY with current month and year (example: February 2026)
+5. Store in GUIDE.md. Use this template. Replace $MONTH_LONG_NAME $YYYY with current month and year (example: February 2026). Bullets below.
+  
+```text
+
+# Best Practices $MONTH_LONG_NAME $YYYY
+
+- Best practice 1
+  Source: [RESULT TITLE]($RESULT_URL)
+- Best practice 2
+  Source: [RESULT TITLE]($RESULT_URL)
+
+---
+
+_last updated: **$below.
+```
+6. Create variations. Start with BASE_RESUME.md. Use JOB.md + GUIDE.md to rewritr the resune. Save as README.md.
+7. Output new variations in HTML. Save as index.html.
+8. Run linters on Markdown and HTML resumes. Automatically correct errors.
+9. Make PDF from linted HTML. Save as resume.pdf
+10. 
+
 
 ## Table of Contents
+
+Below details the complete formatting, ATS, voice, link, layout, validation, and packaging rules used to generate customized variations of a resume.
 
 - [Source of Truth](#source-of-truth)
 - [Quick Rebuild](#quick-rebuild)
